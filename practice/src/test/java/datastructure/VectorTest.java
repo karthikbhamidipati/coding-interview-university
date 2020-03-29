@@ -1,4 +1,5 @@
-import datastructure.array.Vector;
+package datastructure;
+
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
