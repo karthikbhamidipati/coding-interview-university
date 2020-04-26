@@ -23,7 +23,7 @@ public class SortTest {
 
     @BeforeClass
     public static void setUp() {
-        data = new Random().ints(5000, 0, 10000).toArray();
+        data = new Random().ints(50000, 0, 100000).toArray();
         System.out.println("Input data : " + Arrays.toString(data));
         topDownMergeSortData = Arrays.copyOf(data, data.length);
         bottomUpMergeSortData = Arrays.copyOf(data, data.length);

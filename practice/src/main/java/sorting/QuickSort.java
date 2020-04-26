@@ -22,13 +22,14 @@ public class QuickSort {
     }
 
     private static int partition(int[] data, int start, int end) {
-        medianOfThree(data, start, end);
-        int pivotElement= data[start];
+//        medianOfThree(data, start, end); //not efficient
+        median(data, start, end);
+        int pivotElement = data[start];
         int i = start + 1;
         int j = end;
 
         while (j > i) {
-            while (data[i] <= pivotElement) {
+            while (i <= j && data[i] <= pivotElement) {
                 i++;
             }
 
@@ -42,6 +43,21 @@ public class QuickSort {
         }
         swapValues(data, start, j);
         return j;
+    }
+
+    private static void median(int[] data, int start, int end) {
+        int center = (start + end) / 2;
+
+        if (data[start] < data[center])
+            swapValues(data, start, center);
+
+        if (data[start] < data[end])
+            swapValues(data, start, end);
+
+        if (data[center] < data[end])
+            swapValues(data, center, end);
+
+        swapValues(data, center, start);
     }
 
     private static void medianOfThree(int[] data, int start, int end) {
