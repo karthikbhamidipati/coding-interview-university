@@ -96,6 +96,10 @@ public class MaxHeap {
     }
 
     public static void swapValues(int[] data, int index1, int index2) {
+        if (index1 == index2) {
+            return;
+        }
+
         data[index1] = data[index1] + data[index2];
         data[index2] = data[index1] - data[index2];
         data[index1] = data[index1] - data[index2];

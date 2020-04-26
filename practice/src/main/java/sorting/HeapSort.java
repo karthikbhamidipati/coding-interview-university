@@ -5,42 +5,37 @@ import static datastructure.MaxHeap.swapValues;
 
 public class HeapSort {
 
-    private int[] data;
-    private int size;
-
-    public HeapSort(int[] data) {
-        this.data = data;
-        this.size = this.data.length;
-        heapify();
-    }
-
-    private void heapify() {
-        for(int i = this.size - 1; i >= 0; i--) {
-            siftDown(i, this.size - 1);
+    private static void heapify(int[] arr) {
+        for(int i = arr.length - 1; i >= 0; i--) {
+            siftDown(arr, i, arr.length - 1);
         }
     }
 
-    private void siftDown(int index, int length) {
+    private static void siftDown(int[] arr, int index, int length) {
         int lcIndex = getChildIndex(index);
         int rcIndex = lcIndex + 1;
 
-        if (lcIndex >= length)
+        if (lcIndex > length)
             return;
 
-        if (data[lcIndex] > data[index] && data[lcIndex] > data[rcIndex]) {
-            swapValues(data, index, lcIndex);
-            siftDown(lcIndex, length);
-        } else if (data[rcIndex] > data[index]) {
-            swapValues(data, index, rcIndex);
-            siftDown(rcIndex, length);
+        if (rcIndex > length)
+            rcIndex = lcIndex;
+
+        if (arr[lcIndex] > arr[index] && arr[lcIndex] > arr[rcIndex]) {
+            swapValues(arr, index, lcIndex);
+            siftDown(arr, lcIndex, length);
+        } else if (arr[rcIndex] > arr[index]) {
+            swapValues(arr, index, rcIndex);
+            siftDown(arr, rcIndex, length);
         }
     }
     
-    public void sort() {
-        int length = this.size - 1;
-        for (int i = this.size - 1; i > 0; i--) {
-            swapValues(data, 0, i);
-            siftDown(0, --length);
+    public static void sort(int[] arr) {
+        heapify(arr);
+        int length = arr.length - 1;
+        for (int i = arr.length - 1; i > 0; i--) {
+            swapValues(arr, 0, i);
+            siftDown(arr, 0, --length);
         }
     }
 }
