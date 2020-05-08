@@ -9,9 +9,9 @@ public class DFS {
     public static void dfs(Map<Integer, List<Edge>> adjList, List<Integer> parseOrder, boolean[] visited, int start) {
         List<Edge> edges = adjList.get(start);
         parseOrder.add(start);
+        visited[start] = true;
         for (Edge edge : edges) {
             if (!visited[edge.to]) {
-                visited[start] = true;
                 dfs(adjList, parseOrder, visited, edge.to);
             }
         }
@@ -20,7 +20,7 @@ public class DFS {
     public static List<Integer> dfs(Map<Integer, List<Edge>> adjList, int start) {
         List<Integer> parseOrder = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
-        boolean[] visited = new boolean[adjList.size() + 1];
+        boolean[] visited = new boolean[adjList.size()];
         stack.push(start);
 
         while (!stack.isEmpty()) {
@@ -36,10 +36,10 @@ public class DFS {
 
     public static void dfs(int[][] adjMatrix, List<Integer> parseOrder, boolean[] visited, int start) {
         parseOrder.add(start);
+        visited[start] = true;
         for (int i = 0; i < adjMatrix[start].length; i++) {
             int vertex = adjMatrix[start][i];
             if (vertex != 0 && !visited[i]) {
-                visited[start] = true;
                 dfs(adjMatrix, parseOrder, visited, i);
             }
         }

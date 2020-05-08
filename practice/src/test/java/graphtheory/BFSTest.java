@@ -12,14 +12,13 @@ import java.util.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DFSTest {
-
+public class BFSTest {
 
     @Rule
     public ErrorCollector collector = new ErrorCollector();
 
-    private Map<Integer, List<Edge>> adjList;
     private int[][] adjMatrix;
+    private Map<Integer, List<Edge>> adjList;
 
     @Before
     public void setUpAdjacencyList() {
@@ -61,27 +60,12 @@ public class DFSTest {
     }
 
     @Test
-    public void test1DfsAdjListRecursion() {
-        List<Integer> parseOrder = new ArrayList<>();
-        DFS.dfs(adjList, parseOrder, new boolean[adjList.size()], 0);
-        collector.checkThat("Invalid parse Order", parseOrder.equals(Arrays.asList(0, 1, 7, 10, 2, 4, 5, 8, 9, 6, 3)), equalTo(true));
+    public void test1BFSAdjList() {
+        collector.checkThat("Invalid parse order", BFS.bfs(adjList, 0).equals(Arrays.asList(0, 1, 2, 3, 7, 10, 4, 5, 6, 8, 9)), equalTo(true));
     }
 
     @Test
-    public void test2DfsAdjListStack() {
-        collector.checkThat("Invalid parse Order", DFS.dfs(adjList, 0).equals(Arrays.asList(0, 3, 4, 6, 5, 8, 9, 7, 2, 1, 10)), equalTo(true));
+    public void test2BFSAdjMatrix() {
+        collector.checkThat("Invalid parse order", BFS.bfs(adjMatrix, 0).equals(Arrays.asList(0, 1, 2, 3, 7, 10, 4, 5, 6, 8, 9)), equalTo(true));
     }
-
-    @Test
-    public void test3DfsAdjMatrixRecursion() {
-        List<Integer> parseOrder = new ArrayList<>();
-        DFS.dfs(adjMatrix, parseOrder, new boolean[adjList.size()], 0);
-        collector.checkThat("Invalid parse Order", parseOrder.equals(Arrays.asList(0, 1, 7, 10, 2, 4, 5, 8, 9, 6, 3)), equalTo(true));
-    }
-
-    @Test
-    public void test4DfsAdjMatrixStack() {
-        collector.checkThat("Invalid parse Order", DFS.dfs(adjMatrix, 0).equals(Arrays.asList(0, 3, 4, 6, 5, 8, 9, 7, 2, 1, 10)), equalTo(true));
-    }
-
 }
