@@ -15,6 +15,15 @@ public class QueueUsingLinkedList<E> implements Queue<E> {
     }
 
     @Override
+    public E top() {
+        if (this.head == null) {
+            return null;
+        } else {
+            return this.head.val;
+        }
+    }
+
+    @Override
     public void enqueue(E value) {
         if (this.head == null) {
             this.head = new Node<>(value, null);

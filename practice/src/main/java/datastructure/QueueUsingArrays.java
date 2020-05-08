@@ -4,7 +4,7 @@ public class QueueUsingArrays<E> implements Queue<E> {
 
     private static final int DEFAULT_SIZE = 10;
 
-    private Object[] elementData;
+    private final Object[] elementData;
     private int head;
     private int tail;
 
@@ -52,6 +52,16 @@ public class QueueUsingArrays<E> implements Queue<E> {
     @Override
     public boolean empty() {
         return this.head == -1 || this.tail == -1 || this.head == getNext(this.tail, this.elementData.length);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public E top() {
+        if (this.empty()) {
+            return null;
+        } else {
+            return (E) this.elementData[this.head];
+        }
     }
 
     public boolean full() {

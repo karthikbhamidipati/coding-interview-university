@@ -4,4 +4,5 @@ public interface Queue<E> {
     void enqueue(E value);
     E dequeue();
     boolean empty();
+    E top();
 }
