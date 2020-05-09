@@ -1,13 +1,6 @@
 package leetcode;
 
 public class BackSpaceStringCompare {
-    public static void main(String[] args) {
-        System.out.println(new BackSpaceStringCompare().backspaceCompare("ab#c", "ad#c"));
-        System.out.println(new BackSpaceStringCompare().backspaceCompare("ab#c", "ad#c#d#f#d#d#c"));
-        System.out.println(new BackSpaceStringCompare().backspaceCompare("ab##", "c#d#"));
-        System.out.println(new BackSpaceStringCompare().backspaceCompare("a##c", "#a#c"));
-        System.out.println(new BackSpaceStringCompare().backspaceCompare("bxj##tw", "bxo#j##tw"));
-    }
 
     public boolean backspaceCompare(String S, String T) {
         int i = S.length() - 1;
