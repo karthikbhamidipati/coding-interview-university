@@ -49,11 +49,6 @@ public class MinIndexedDAryHeap<K, V extends Comparable<V>> {
         return hashTable.getKey(heapIndexMap[0]);
     }
 
-
-    private int peekMinKeyIndex() {
-        return heapIndexMap[0];
-    }
-
     @SuppressWarnings("unchecked")
     public V peekMinValue() {
         return (V) values[heapIndexMap[0]];
@@ -159,7 +154,7 @@ public class MinIndexedDAryHeap<K, V extends Comparable<V>> {
     @SuppressWarnings("unchecked")
     private void siftUp(int heapIndex) {
         int parentIndex = getParent(heapIndex);
-        while (parentIndex >= 0  && (((V) values[heapIndexMap[heapIndex]]).compareTo((V) values[heapIndexMap[parentIndex]]) < 0)) {
+        while (parentIndex >= 0 && (((V) values[heapIndexMap[heapIndex]]).compareTo((V) values[heapIndexMap[parentIndex]]) < 0)) {
             swap(heapIndex, parentIndex);
             heapIndex = parentIndex;
             parentIndex = getParent(heapIndex);
