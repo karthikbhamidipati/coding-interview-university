@@ -137,8 +137,10 @@ public class MinIndexedDAryHeap<K, V extends Comparable<V>> {
             V value = (V) values[keyIndex];
             sb.append(String.format("(%s, %s), ", key.toString(), value.toString()));
         }
-        sb.deleteCharAt(sb.length() - 1);
-        sb.deleteCharAt(sb.length() - 1);
+        if (sb.length() > 1) {
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        }
         sb.append("}");
         return sb.toString();
     }
@@ -154,7 +156,7 @@ public class MinIndexedDAryHeap<K, V extends Comparable<V>> {
     @SuppressWarnings("unchecked")
     private void siftUp(int heapIndex) {
         int parentIndex = getParent(heapIndex);
-        while (parentIndex >= 0 && (((V) values[heapIndexMap[heapIndex]]).compareTo((V) values[heapIndexMap[parentIndex]]) < 0)) {
+        while (parentIndex != heapIndex && parentIndex >= 0 && (((V) values[heapIndexMap[heapIndex]]).compareTo((V) values[heapIndexMap[parentIndex]]) < 0)) {
             swap(heapIndex, parentIndex);
             heapIndex = parentIndex;
             parentIndex = getParent(heapIndex);

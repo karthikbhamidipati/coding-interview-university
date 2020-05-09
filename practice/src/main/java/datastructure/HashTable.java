@@ -8,7 +8,7 @@ public class HashTable<K, V> {
     @SuppressWarnings("unchecked")
     public HashTable() {
         size = 0;
-        capacity = 4;
+        capacity = 16;
         nodes = new Node[this.capacity];
     }
 
