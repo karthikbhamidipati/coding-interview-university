@@ -6,11 +6,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.runners.MethodSorters;
+import util.Tuple2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DjikstraTest {
@@ -43,12 +43,12 @@ public class DjikstraTest {
 
     @Test
     public void testShortestPath() {
-        System.out.println(djikstra.getShortestPath(0));
-        System.out.println(djikstra.getShortestPath(1));
-        System.out.println(djikstra.getShortestPath(2));
-        System.out.println(djikstra.getShortestPath(3));
-        System.out.println(djikstra.getShortestPath(4));
-        System.out.println(djikstra.getShortestPath(5));
-        System.out.println(djikstra.getShortestPath(6));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(0), equalTo(new Tuple2<>(Collections.singletonList(0), 0)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(1), equalTo(new Tuple2<>(Arrays.asList(0, 2, 1), 4)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(2), equalTo(new Tuple2<>(Arrays.asList(0, 2), 1)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(3), equalTo(new Tuple2<>(Arrays.asList(0, 2, 1, 3), 7)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(4), equalTo(new Tuple2<>(Arrays.asList(0, 2, 1, 3, 4), 9)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(5), equalTo(new Tuple2<>(Arrays.asList(0, 2, 1, 3, 4, 5), 10)));
+        collector.checkThat("Shortest Path not as expected", djikstra.getShortestPath(6), equalTo(new Tuple2<>(Collections.emptyList(), null)));
     }
 }
