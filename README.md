@@ -867,7 +867,7 @@ Graphs can be used to represent many problems in computer science, so this secti
         - [x] topological sort
         - [x] count connected components in a graph
         - [x] list strongly connected components
-        - [ ] check for bipartite graph
+        - [x] check for bipartite graph
 
 ## Even More Knowledge
 
