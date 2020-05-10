@@ -36,7 +36,7 @@ public class Djikstra {
                 if (visited[edge.to]) {
                     continue;
                 }
-                int newDist = dist[key] + edge.weight;
+                int newDist = value + edge.weight;
                 if (newDist < dist[edge.to]) {
                     parent[edge.to] = key;
                     dist[edge.to] = newDist;
