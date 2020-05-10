@@ -32,9 +32,6 @@ public class Djikstra {
             int key = indexPriorityQueue.peekMinKey();
             int value = indexPriorityQueue.pollMinValue();
             visited[key] = true;
-            if (dist[key] < value) {
-                continue;
-            }
             for (Edge edge : adjList.get(key)) {
                 if (visited[edge.to]) {
                     continue;

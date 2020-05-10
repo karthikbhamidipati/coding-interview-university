@@ -1,7 +1,5 @@
 package sorting;
 
-import java.util.Random;
-
 import static datastructure.MaxHeap.swapValues;
 
 public class QuickSort {
@@ -60,7 +58,7 @@ public class QuickSort {
         swapValues(data, center, start);
     }
 
-    private static void medianOfThree(int[] data, int start, int end) {
+    /*private static void medianOfThree(int[] data, int start, int end) {
         int[] rIndexes = new Random().ints(3, start, end).toArray();
 
         if (data[rIndexes[0]] < data[rIndexes[1]]) {
@@ -76,7 +74,7 @@ public class QuickSort {
                 swapValues(data, start, rIndexes[2]);
             }
         }
-    }
+    }*/
 
     private static void insertionSort(int[] data, int start, int end) {
         for (int i = start; i < end; i++) {
