@@ -11,6 +11,14 @@ public class Tuple2<K, V> {
         this.value = value;
     }
 
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return String.format("(%s, %s)", key, value);
@@ -25,8 +33,4 @@ public class Tuple2<K, V> {
                 Objects.equals(value, tuple2.value);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(key, value);
-    }
 }
