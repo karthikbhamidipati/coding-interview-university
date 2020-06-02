@@ -1,12 +1,15 @@
 package datastructure;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BiDirHashTable<K, V> {
-    private final HashTable<K, V> keyIndexed;
-    private final HashTable<V, K> valueIndexed;
+    private final Map<K, V> keyIndexed;
+    private final Map<V, K> valueIndexed;
 
     public BiDirHashTable() {
-        keyIndexed = new HashTable<>();
-        valueIndexed = new HashTable<>();
+        keyIndexed = new HashMap<>();
+        valueIndexed = new HashMap<>();
     }
 
     public void add(K key, V value) {
@@ -15,16 +18,16 @@ public class BiDirHashTable<K, V> {
         } else if (valueExists(value)) {
             throw new IllegalArgumentException("Updates with existing values not allowed");
         }
-        keyIndexed.add(key, value);
-        valueIndexed.add(value, key);
+        keyIndexed.put(key, value);
+        valueIndexed.put(value, key);
     }
 
     public boolean keyExists(K key) {
-        return keyIndexed.exists(key);
+        return keyIndexed.containsKey(key);
     }
 
     public boolean valueExists(V value) {
-        return valueIndexed.exists(value);
+        return valueIndexed.containsKey(value);
     }
 
     public K getKey(V value) {
