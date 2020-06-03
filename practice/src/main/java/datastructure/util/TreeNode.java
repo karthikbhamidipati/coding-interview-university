@@ -34,4 +34,9 @@ public class TreeNode<E> {
     public void setRight(TreeNode<E> right) {
         this.right = right;
     }
+
+    @Override
+    public String toString() {
+        return "TreeNode [data = " + data + ", left = " + left + ", right = " + right + "]";
+    }
 }

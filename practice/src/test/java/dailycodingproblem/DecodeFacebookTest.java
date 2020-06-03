@@ -20,6 +20,8 @@ public class DecodeFacebookTest {
 
     @Test
     public void test() {
+        collector.checkThat("Wrong output", obj.ways("0"), equalTo(0));
+        collector.checkThat("Wrong output", obj.ways("1"), equalTo(1));
         collector.checkThat("Wrong output", obj.ways("1262"), equalTo(3));
         collector.checkThat("Wrong output", obj.ways("26"), equalTo(2));
         collector.checkThat("Wrong output", obj.ways("127"), equalTo(2));

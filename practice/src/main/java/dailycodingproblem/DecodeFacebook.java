@@ -23,9 +23,7 @@ public class DecodeFacebook {
         int num = number.charAt(number.length() - 1) - '0';
         for (int i = number.length() - 2; i >= 0; i--) {
             num = num + ((number.charAt(i) - '0') * 10);
-            if (num > 0 && num < 10) {
-                var1 = var2;
-            } else if (num <= 26) {
+            if (num <= 26) {
                 int temp = var1 + var2;
                 var1 = var2;
                 var2 = temp;
