@@ -9,11 +9,10 @@ import org.junit.rules.ErrorCollector;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class BSTSerDeTest {
-    @Rule
-    public ErrorCollector collector = new ErrorCollector();
-
     private static BSTSerDe obj;
     private static TreeNode<Integer> node;
+    @Rule
+    public ErrorCollector collector = new ErrorCollector();
 
     @BeforeClass
     public static void setup() {
@@ -53,10 +52,6 @@ public class BSTSerDeTest {
     @Test
     public void testInvalidDeserialize() {
         TreeNode<Integer> output = obj.deserialize("");
-        collector.checkThat("Output doesn't match", compareBST(null, output), equalTo(true));
-        output = obj.deserialize("abc");
-        collector.checkThat("Output doesn't match", compareBST(null, output), equalTo(true));
-        output = obj.deserialize("n:");
         collector.checkThat("Output doesn't match", compareBST(null, output), equalTo(true));
     }
 

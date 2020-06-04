@@ -5,8 +5,8 @@ import datastructure.util.TreeNode;
 /**
  * Given the root to a binary tree
  * Implement:
- *  serialize(root) -> which serializes the tree into a string
- *  deserialize(s) -> which deserializes the string back into the tree
+ * serialize(root) -> which serializes the tree into a string
+ * deserialize(s) -> which deserializes the string back into the tree
  */
 public class BSTSerDe {
 
@@ -18,50 +18,43 @@ public class BSTSerDe {
         }
         StringBuilder sb = new StringBuilder();
         preOrderTraversalSerialize(root, sb);
-        sb.delete(sb.length() - 2, sb.length() - 1);
         return sb.toString();
     }
 
     private void preOrderTraversalSerialize(TreeNode<Integer> node, StringBuilder sb) {
-        sb.append("n: ");
         sb.append(node.getData().toString());
-        sb.append(", ");
 
         if (node.getLeft() == null) {
-            sb.append("l: null, ");
+            sb.append(" null");
         } else {
-            sb.append("l: ");
+            sb.append(" ");
             preOrderTraversalSerialize(node.getLeft(), sb);
         }
         if (node.getRight() == null) {
-            sb.append("r: null, ");
+            sb.append(" null");
         } else {
-            sb.append("r: ");
+            sb.append(" ");
             preOrderTraversalSerialize(node.getRight(), sb);
         }
     }
 
     public TreeNode<Integer> deserialize(String s) {
-        if (s == null) {
-            return null;
-        }
         index = 0;
         return preOrderTraversalDeserialize(s);
     }
 
     private TreeNode<Integer> preOrderTraversalDeserialize(String s) {
-        if (index >= s.length() - 3 || !s.startsWith("n:", index)) {
+        if (s == null || s.length() == 0 || index >= s.length()) {
             return null;
         }
-        index += 3;
         int num = 0;
 
-        while (Character.isDigit(s.charAt(index))) {
+        while (index < s.length() && Character.isDigit(s.charAt(index))) {
             num = (num * 10) + (s.charAt(index) - '0');
             index++;
         }
 
-        index += 5;
+        index++;
         TreeNode<Integer> node = new TreeNode<>(num);
         if (s.startsWith("null", index)) {
             node.setLeft(null);
@@ -70,7 +63,7 @@ public class BSTSerDe {
             node.setLeft(preOrderTraversalDeserialize(s));
         }
 
-        index += 5;
+        index++;
         if (s.startsWith("null", index)) {
             node.setRight(null);
             index += 4;
