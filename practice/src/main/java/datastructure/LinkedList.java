@@ -179,6 +179,7 @@ public class LinkedList<E> {
                         this.size--;
                         break;
                     }
+                    pointer = pointer.next;
                 }
             }
         }

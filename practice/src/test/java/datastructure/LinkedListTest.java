@@ -60,7 +60,7 @@ public class LinkedListTest {
         collector.checkThat("Incorrect LinkedList Size", linkedList.size(), equalTo(15));
     }
 
-    @Test
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void test6Insert() {
         linkedList.insert(0, 0);
         linkedList.insert(9, 1000);
@@ -74,9 +74,10 @@ public class LinkedListTest {
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(10), equalTo(9));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(16), equalTo(15));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(17), equalTo(10000));
+        linkedList.insert(1000, 3);
     }
 
-    @Test
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void test7Erase() {
         linkedList.erase(0);
         linkedList.erase(8);
@@ -89,6 +90,7 @@ public class LinkedListTest {
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(10), equalTo(11));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(14), equalTo(15));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(15), equalTo(10000));
+        linkedList.erase(1000);
     }
 
     @Test
@@ -108,7 +110,8 @@ public class LinkedListTest {
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(7), equalTo(9));
 
         linkedList.remove_value(10000);
-        collector.checkThat("Incorrect LinkedList Size", linkedList.size(), equalTo(15));
+        linkedList.remove_value(2);
+        collector.checkThat("Incorrect LinkedList Size", linkedList.size(), equalTo(14));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(0), equalTo(15));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(1), equalTo(14));
         collector.checkThat("Incorrect LinkedList value", linkedList.value_at(7), equalTo(8));
